@@ -19,14 +19,14 @@ export default function Home() {
           className="text-lg sm:text-xl mb-8"
           style={{ color: "var(--ctp-mocha-lavender)" }}
         >
-          Sebelumnya perkenalkan saya adalah seorang Frontend Website Developer{" "}
+          Let me introduce my self, my name is{" "}
           <span
             className="font-semibold"
             style={{ color: "var(--ctp-mocha-green)" }}
           >
-            Catppuccin
+            I Putu Ryan Dana Putra
           </span>{" "}
-          color palette.
+          and this is my personal website built with Next.js and Tailwind CSS
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <a
