@@ -56,8 +56,8 @@ export default function RootLayout({
   ];
 
   return (
-    <html lang="en">
-      <body
+    <html suppressHydrationWarning lang="en">
+      <body suppressHydrationWarning
         className={`${poppins.variable} font-poppins antialiased min-h-screen`}
         style={{
           background: "var(--ctp-mocha-base, #1e1e2e)",
@@ -100,13 +100,13 @@ export default function RootLayout({
         {/* Vertical Navigation Sidebar */}
         <nav
           id="vertical-nav"
-          className={`fixed left-4 top-4 bottom-4 z-50 flex flex-col transition-all duration-300 ease-in-out rounded-2xl
+          className={`group fixed left-4 top-4 bottom-4 z-50 flex flex-col transition-all duration-300 ease-in-out rounded-2xl
             ${
               isMenuOpen
                 ? "translate-x-0"
                 : "-translate-x-full lg:translate-x-0"
             }
-            w-72 lg:w-72
+            w-20 lg:w-20 lg:group-hover:w-72
           `}
           style={{
             background: "rgba(30, 30, 46, 0.9)",
@@ -114,6 +114,7 @@ export default function RootLayout({
             border: "2px solid var(--ctp-mocha-surface2, #585b70)",
             boxShadow:
               "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(180, 190, 254, 0.1)",
+            overflow: "hidden",
           }}
         >
           {/* Logo Section */}
@@ -140,7 +141,7 @@ export default function RootLayout({
                   style={{ color: "var(--ctp-mocha-base, #1e1e2e)" }}
                 >
                   CV
-                </span> 
+                </span>
               </div>
               <span className="opacity-100 lg:pl-2 group-hover/nav:opacity-100 transition-all duration-300 whitespace-nowrap overflow-hidden">
                 Portfolio
@@ -152,13 +153,7 @@ export default function RootLayout({
           <div className="flex-1 py-6 px-2 lg:px-3 space-y-1 overflow-visible transition-all duration-300">
             {navItems.map((item) => {
               // Only highlight active nav after mount to avoid hydration mismatch
-              let isActive = false;
-              if (isMounted) {
-                isActive =
-                  item.href === "/"
-                    ? pathname === "/"
-                    : pathname.startsWith(item.href);
-              }
+              const isActive = pathname === item.href;
               return (
                 <div key={item.href} className="relative">
                   <a
@@ -194,7 +189,7 @@ export default function RootLayout({
                     <span className="text-xl flex-shrink-0 z-10 relative flex items-center justify-center w-8 h-8">
                       {item.icon}
                     </span>
-                    <span className="whitespace-nowrap opacity-100 transition-all duration-300 text-sm z-10 relative">
+                    <span className="whitespace-nowrap opacity-0 lg:group-hover:opacity-100 transition-all duration-300 text-sm z-10 relative lg:pl-2">
                       {item.label}
                     </span>
                   </a>
