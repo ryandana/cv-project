@@ -1,7 +1,8 @@
 "use client";
 import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { usePathname } from "next/navigation";
 import "./globals.css";
 
 const poppins = Poppins({
@@ -17,6 +18,42 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const pathname = usePathname();
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
+
+  // No scroll-based section tracking; use pathname for active link
+
+  // Close mobile menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      const nav = document.getElementById("vertical-nav");
+      const toggle = document.getElementById("menu-toggle");
+
+      if (
+        isMenuOpen &&
+        nav &&
+        toggle &&
+        !nav.contains(event.target as Node) &&
+        !toggle.contains(event.target as Node)
+      ) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [isMenuOpen]);
+
+  const navItems = [
+    { href: "/", label: "Home", icon: "🏠" },
+    { href: "/about", label: "About", icon: "👨‍💻" },
+    { href: "/projects", label: "Projects", icon: "🚀" },
+    { href: "/contact", label: "Contact", icon: "📧" },
+  ];
 
   return (
     <html lang="en">
@@ -27,148 +64,156 @@ export default function RootLayout({
           color: "var(--ctp-mocha-text, #cdd6f4)",
         }}
       >
-        <nav
-          className="px-5 py-3 flex items-center justify-between fixed top-4 left-4 right-4 z-50 backdrop-blur-xl border-2 shadow-2xl rounded-3xl transition-all duration-300 hover:shadow-3xl"
+        {/* Mobile Menu Toggle - Only visible on mobile */}
+        <button
+          id="menu-toggle"
+          onClick={() => setIsMenuOpen(!isMenuOpen)}
+          className="lg:hidden fixed top-6 left-6 z-[60] flex flex-col justify-center items-center w-12 h-12 cursor-pointer group rounded-xl transition-all duration-300 hover:scale-110"
           style={{
-            background: "rgba(30, 30, 46, 0.8)",
-            borderColor: "var(--ctp-mocha-surface2, #585b70)",
-            width: "calc(100vw - 2rem)",
-            boxShadow: `
-              0 25px 50px -12px rgba(17, 17, 27, 0.8),
-              0 0 0 1px rgba(180, 190, 254, 0.1),
-              inset 0 1px 0 0 rgba(205, 214, 244, 0.1)
-            `,
+            background: "rgba(30, 30, 46, 0.9)",
+            backdropFilter: "blur(20px)",
+            border: "2px solid var(--ctp-mocha-surface2, #585b70)",
+            boxShadow: "0 8px 32px rgba(0, 0, 0, 0.3)",
+          }}
+          aria-label="Toggle menu"
+        >
+          <span
+            className={`block w-5 h-0.5 mb-1 transition-all duration-300 rounded-full ${
+              isMenuOpen ? "rotate-45 translate-y-1.5" : ""
+            }`}
+            style={{ background: "var(--ctp-mocha-text, #cdd6f4)" }}
+          />
+          <span
+            className={`block w-5 h-0.5 mb-1 transition-all duration-300 rounded-full ${
+              isMenuOpen ? "opacity-0" : ""
+            }`}
+            style={{ background: "var(--ctp-mocha-text, #cdd6f4)" }}
+          />
+          <span
+            className={`block w-5 h-0.5 transition-all duration-300 rounded-full ${
+              isMenuOpen ? "-rotate-45 -translate-y-1.5" : ""
+            }`}
+            style={{ background: "var(--ctp-mocha-text, #cdd6f4)" }}
+          />
+        </button>
+
+        {/* Vertical Navigation Sidebar */}
+        <nav
+          id="vertical-nav"
+          className={`fixed left-4 top-4 bottom-4 z-50 flex flex-col transition-all duration-300 ease-in-out rounded-2xl
+            ${
+              isMenuOpen
+                ? "translate-x-0"
+                : "-translate-x-full lg:translate-x-0"
+            }
+            w-72 lg:w-72
+          `}
+          style={{
+            background: "rgba(30, 30, 46, 0.9)",
+            backdropFilter: "blur(20px)",
+            border: "2px solid var(--ctp-mocha-surface2, #585b70)",
+            boxShadow:
+              "0 8px 32px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(180, 190, 254, 0.1)",
           }}
         >
-          {/* Logo */}
-          <a
-            href="/"
-            className="flex items-center gap-3 font-bold text-2xl tracking-tight group transition-all duration-300"
-            style={{ color: "var(--ctp-mocha-rosewater, #f5e0dc)" }}
+          {/* Logo Section */}
+          <div
+            className="p-3 lg:p-4 border-b-2 transition-all duration-300"
+            style={{ borderColor: "var(--ctp-mocha-surface1, #45475a)" }}
           >
-            <div
-              className="w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-300 group-hover:scale-110"
-              style={{
-                background:
-                  "linear-gradient(135deg, var(--ctp-mocha-mauve, #cba6f7) 0%, var(--ctp-mocha-pink, #f5c2e7) 100%)",
-                boxShadow: "0 8px 32px rgba(203, 166, 247, 0.3)",
-              }}
+            <a
+              href="/"
+              className="flex items-center group-hover/nav:justify-start gap-3 lg:gap-0 group-hover/nav:gap-3 font-bold text-lg tracking-tight group/logo transition-all duration-300"
+              style={{ color: "var(--ctp-mocha-rosewater, #f5e0dc)" }}
+              onClick={() => setIsMenuOpen(false)}
             >
-              <span
-                className="text-base font-bold"
-                style={{ color: "var(--ctp-mocha-base, #1e1e2e)" }}
+              <div
+                className="w-10 h-10 rounded-lg flex items-center justify-center transition-all duration-300 group-hover/logo:scale-110 flex-shrink-0"
+                style={{
+                  background:
+                    "linear-gradient(135deg, var(--ctp-mocha-mauve, #cba6f7) 0%, var(--ctp-mocha-pink, #f5c2e7) 100%)",
+                  boxShadow: "0 6px 24px rgba(203, 166, 247, 0.3)",
+                }}
               >
-                CV
+                <span
+                  className="text-sm font-bold"
+                  style={{ color: "var(--ctp-mocha-base, #1e1e2e)" }}
+                >
+                  CV
+                </span> 
+              </div>
+              <span className="opacity-100 lg:pl-2 group-hover/nav:opacity-100 transition-all duration-300 whitespace-nowrap overflow-hidden">
+                Portfolio
               </span>
-            </div>
-            <span className="hidden sm:block group-hover:text-opacity-80 transition-all duration-300">
-              Portfolio
-            </span>
-          </a>
-
-          {/* Mobile Menu Toggle */}
-          <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="sm:hidden flex flex-col justify-center items-center w-10 h-10 cursor-pointer group rounded-lg transition-all duration-300 hover:bg-opacity-20 relative"
-            style={{ background: "var(--ctp-mocha-surface1, #45475a)" }}
-            aria-label="Toggle menu"
-          >
-            <span
-              className={`block w-6 h-0.5 mb-1.5 transition-all duration-300 rounded-full ${
-                isMenuOpen ? "rotate-45 translate-y-2" : ""
-              }`}
-              style={{ background: "var(--ctp-mocha-text, #cdd6f4)" }}
-            />
-            <span
-              className={`block w-6 h-0.5 mb-1.5 transition-all duration-300 rounded-full ${
-                isMenuOpen ? "opacity-0" : ""
-              }`}
-              style={{ background: "var(--ctp-mocha-text, #cdd6f4)" }}
-            />
-            <span
-              className={`block w-6 h-0.5 transition-all duration-300 rounded-full ${
-                isMenuOpen ? "-rotate-45 -translate-y-2" : ""
-              }`}
-              style={{ background: "var(--ctp-mocha-text, #cdd6f4)" }}
-            />
-          </button>
+            </a>
+          </div>
 
           {/* Navigation Links */}
-          <div
-            className={`flex-col sm:flex-row flex gap-2 sm:gap-1 items-center
-              sm:static sm:w-auto sm:rounded-none sm:mt-0
-              fixed left-0 right-0 top-20
-              w-full
-              z-50
-              transition-[max-height,opacity,visibility] ${
-                isMenuOpen ? "duration-700" : "duration-300"
-              } ease-in-out
-              rounded-2xl
-              px-6 sm:px-0
-              py-6 sm:py-0
-              mt-0 sm:mt-0
-              ${
-                isMenuOpen
-                  ? "max-h-96 pointer-events-auto border-2 shadow-2xl opacity-100 visible"
-                  : "max-h-0 pointer-events-none border-0 shadow-none opacity-0 invisible"
+          <div className="flex-1 py-6 px-2 lg:px-3 space-y-1 overflow-visible transition-all duration-300">
+            {navItems.map((item) => {
+              // Only highlight active nav after mount to avoid hydration mismatch
+              let isActive = false;
+              if (isMounted) {
+                isActive =
+                  item.href === "/"
+                    ? pathname === "/"
+                    : pathname.startsWith(item.href);
               }
-              sm:opacity-100 sm:visible
-            `}
-            style={{
-              background: "rgba(30, 30, 46, 0.95)",
-              borderColor: "var(--ctp-mocha-surface2, #585b70)",
-              backdropFilter: "blur(20px)",
-            }}
-          >
-            {[
-              { href: "/", label: "Home", icon: "🏠" },
-              { href: "/about", label: "About", icon: "👨‍💻" },
-              { href: "/projects", label: "Projects", icon: "🚀" },
-              { href: "/contact", label: "Contact", icon: "📧" },
-            ].map((item, index) => (
-              <a
-                key={item.href}
-                href={item.href}
-                className="flex items-center gap-3 sm:gap-2 font-semibold px-4 py-3 sm:py-2 rounded-xl transition-all duration-300 group hover:scale-105 relative overflow-hidden min-w-0 w-full sm:w-auto"
-                style={{
-                  color: "var(--ctp-mocha-subtext1, #bac2de)",
-                  animationDelay: `${index * 100}ms`,
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background =
-                    "linear-gradient(135deg, var(--ctp-mocha-blue, #89b4fa) 0%, var(--ctp-mocha-lavender, #b4befe) 100%)";
-                  e.currentTarget.style.color =
-                    "var(--ctp-mocha-base, #1e1e2e)";
-                  e.currentTarget.style.transform = "translateY(-2px)";
-                  e.currentTarget.style.boxShadow =
-                    "0 10px 25px rgba(137, 180, 250, 0.4)";
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = "transparent";
-                  e.currentTarget.style.color =
-                    "var(--ctp-mocha-subtext1, #bac2de)";
-                  e.currentTarget.style.transform = "translateY(0)";
-                  e.currentTarget.style.boxShadow = "none";
-                }}
-              >
-                <span className="text-lg sm:hidden">{item.icon}</span>
-                <span className="whitespace-nowrap">{item.label}</span>
+              return (
+                <div key={item.href} className="relative">
+                  <a
+                    href={item.href}
+                    className={`flex items-center justify-start gap-3 font-medium px-2 lg:px-3 py-3 rounded-xl transition-all duration-300 group/item relative cursor-pointer w-full
+                      ${
+                        isActive
+                          ? "text-white shadow-lg"
+                          : "text-gray-300 hover:text-white hover:bg-blue-500/10"
+                      }
+                    `}
+                    style={{
+                      background: isActive
+                        ? "linear-gradient(135deg, var(--ctp-mocha-blue, #89b4fa) 0%, var(--ctp-mocha-lavender, #b4befe) 100%)"
+                        : "transparent",
+                      boxShadow: isActive
+                        ? "0 4px 20px rgba(137, 180, 250, 0.3)"
+                        : "none",
+                      color: isActive
+                        ? "var(--ctp-mocha-base, #1e1e2e)"
+                        : "var(--ctp-mocha-subtext1, #bac2de)",
+                    }}
+                    onClick={() => setIsMenuOpen(false)}
+                  >
+                    {/* Active indicator */}
+                    {isActive && (
+                      <div
+                        className="absolute left-0 top-1/2 -translate-y-1/2 w-1 h-8 rounded-r-full"
+                        style={{ background: "var(--ctp-mocha-base, #1e1e2e)" }}
+                      />
+                    )}
 
-                {/* Subtle glow effect */}
-                <div
-                  className="absolute inset-0 rounded-xl opacity-0 group-hover:opacity-100 transition-opacity duration-300 -z-10"
-                  style={{
-                    background:
-                      "linear-gradient(135deg, rgba(137, 180, 250, 0.1) 0%, rgba(180, 190, 254, 0.1) 100%)",
-                  }}
-                />
-              </a>
-            ))}
+                    <span className="text-xl flex-shrink-0 z-10 relative flex items-center justify-center w-8 h-8">
+                      {item.icon}
+                    </span>
+                    <span className="whitespace-nowrap opacity-100 transition-all duration-300 text-sm z-10 relative">
+                      {item.label}
+                    </span>
+                  </a>
+                </div>
+              );
+            })}
           </div>
         </nav>
 
+        {/* Mobile Overlay */}
+        {isMenuOpen && (
+          <div
+            className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40 transition-opacity duration-500"
+            onClick={() => setIsMenuOpen(false)}
+          />
+        )}
+
         {/* Page Content */}
-        <div>{children}</div>
+        <div className="lg:ml-24 transition-all duration-300">{children}</div>
       </body>
     </html>
   );

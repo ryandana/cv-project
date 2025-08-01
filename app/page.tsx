@@ -8,23 +8,24 @@ export default function Home() {
         color: "var(--ctp-mocha-text)",
       }}
     >
-      <div className="max-w-xl w-full text-center">
+      <div className="max-w-xl w-full text-center flex flex-col items-center gap-4">
+        <img className="w-50 rounded-full" src="/img/pfp.jpg" alt="" />
         <h1
-          className="text-4xl sm:text-5xl font-bold mb-4"
+          className="text-2xl sm:text-3xl font-bold"
           style={{ color: "var(--ctp-mocha-rosewater)" }}
         >
-          Welcome
+          I Putu Ryan Dana Putra
         </h1>
         <p
-          className="text-lg sm:text-xl mb-8"
+          className="text-lg sm:text-xl"
           style={{ color: "var(--ctp-mocha-lavender)" }}
         >
-          Let me introduce my self, my name is{" "}
+          Hello i'm a web developer that {" "}
           <span
             className="font-semibold"
             style={{ color: "var(--ctp-mocha-green)" }}
           >
-            I Putu Ryan Dana Putra
+            Lorem ipsum dolor sit amet.
           </span>{" "}
           and this is my personal website built with Next.js and Tailwind CSS
         </p>

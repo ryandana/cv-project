@@ -1,3 +1,30 @@
+/* Navbar link hover animation enhancement */
+.nav-link {
+  position: relative;
+  overflow: hidden;
+}
+.nav-link > span {
+  position: relative;
+  z-index: 10;
+}
+.nav-link > .absolute {
+  transition-property: transform, opacity;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 500ms;
+  transform: scaleX(0);
+  opacity: 0.8;
+}
+.nav-link:hover > .absolute,
+.nav-link:focus-visible > .absolute,
+.group:hover .nav-link > .absolute {
+  transform: scaleX(1);
+  opacity: 1;
+}
+.nav-link:hover > span,
+.nav-link:focus-visible > span,
+.group:hover .nav-link > span {
+  color: var(--ctp-mocha-base, #1e1e2e);
+}
 :root {
   --ctp-mocha-base: #1e1e2e;
   --ctp-mocha-mantle: #181825;
