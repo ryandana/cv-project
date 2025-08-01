@@ -31,10 +31,12 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.variable} antialiased`}
       >
         <nav
-          className="w-full px-4 sm:px-8 py-4 flex items-center justify-between fixed top-0 left-0 z-50 backdrop-blur border-b"
+          className="px-6 py-4 flex items-center justify-between fixed top-6 left-1/2 transform -translate-x-1/2 z-50 backdrop-blur border shadow-lg rounded-2xl"
           style={{
             background: "var(--ctp-mocha-surface0, #1e1e2e)",
             borderColor: "var(--ctp-mocha-surface2, #585b70)",
+            maxWidth: "700px",
+            width: "calc(100% - 2rem)",
           }}
         >
           <a
