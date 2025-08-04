@@ -6,7 +6,9 @@ export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
       <div className="absolute inset-0 w-full min-h-screen bg-slate-900 z-20 [mask-image:radial-gradient(transparent,white)] pointer-events-none" />
-      <Boxes />
+      <div className="absolute inset-0 w-full h-full min-h-screen z-10 overflow-hidden">
+        <Boxes />
+      </div>
       <div className="relative z-30 max-w-xl w-full text-center flex flex-col items-center gap-4">
         <img className="w-50 rounded-full" src="/img/pfp.jpg" alt="" />
         <h1

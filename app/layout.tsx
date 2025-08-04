@@ -9,8 +9,11 @@ import {
   IconBrandX,
   IconExchange,
   IconHome,
+  IconInfoCircle,
   IconNewSection,
+  IconRocket,
   IconTerminal2,
+  IconUser,
 } from "@tabler/icons-react";
 import { motion } from "motion/react";
 import { cn } from "@/lib/utils";
@@ -28,62 +31,56 @@ export default function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  // ...existing code...
-  // FloatingDockDemo implementation inline
   const links = [
     {
       title: "Home",
       icon: (
-        <IconHome className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconHome
+          className="h-full w-full transition-colors duration-200"
+          style={{ color: "var(--ctp-mocha-blue, #89b4fa)" }}
+        />
       ),
       href: "/",
     },
     {
-      title: "Products",
+      title: "About",
       icon: (
-        <IconTerminal2 className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Components",
-      icon: (
-        <IconNewSection className="h-full w-full text-neutral-500 dark:text-neutral-300" />
-      ),
-      href: "#",
-    },
-    {
-      title: "Aceternity UI",
-      icon: (
-        <img
-          src="https://assets.aceternity.com/logo-dark.png"
-          width={20}
-          height={20}
-          alt="Aceternity Logo"
+        <IconInfoCircle
+          className="h-full w-full transition-colors duration-200"
+          style={{ color: "var(--ctp-mocha-green, #a6e3a1)" }}
         />
       ),
-      href: "#",
+      href: "/about",
     },
     {
-      title: "Changelog",
+      title: "Projects",
       icon: (
-        <IconExchange className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconRocket
+          className="h-full w-full transition-colors duration-200"
+          style={{ color: "var(--ctp-mocha-yellow, #f9e2af)" }}
+        />
       ),
-      href: "#",
+      href: "/projects",
     },
     {
-      title: "Twitter",
+      title: "Contact",
       icon: (
-        <IconBrandX className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconUser
+          className="h-full w-full transition-colors duration-200"
+          style={{ color: "var(--ctp-mocha-pink, #f5c2e7)" }}
+        />
       ),
-      href: "#",
+      href: "/contact",
     },
     {
       title: "GitHub",
       icon: (
-        <IconBrandGithub className="h-full w-full text-neutral-500 dark:text-neutral-300" />
+        <IconBrandGithub
+          className="h-full w-full transition-colors duration-200"
+          style={{ color: "var(--ctp-mocha-mauve, #cba6f7)" }}
+        />
       ),
-      href: "#",
+      href: "https://github.com/ryandana",
     },
   ];
 
@@ -100,7 +97,7 @@ export default function RootLayout({
         <div className="relative min-h-screen w-full">
           {children}
           <div className="fixed bottom-4 left-0 w-full flex items-center justify-center z-50">
-            <FloatingDock mobileClassName="mb-6" items={links} />
+              <FloatingDock mobileClassName="mb-6" items={links} />
           </div>
         </div>
       </body>
