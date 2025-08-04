@@ -1,5 +1,6 @@
-"use client"
-
+"use client";
+import { ShootingStars } from "@/components/ui/shooting-stars";
+import { StarsBackground } from "@/components/ui/stars-background";
 import { HeroParallax } from "@/components/ui/hero-parallax";
 
 export const products = [
@@ -21,7 +22,7 @@ export const products = [
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/rogue.png",
   },
- 
+
   {
     title: "Editorially",
     link: "https://editorially.org",
@@ -40,7 +41,7 @@ export const products = [
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
   },
- 
+
   {
     title: "Algochurn",
     link: "https://algochurn.com",
@@ -71,7 +72,7 @@ export const products = [
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/renderwork.png",
   },
- 
+
   {
     title: "Creme Digital",
     link: "https://cremedigital.com",
@@ -100,6 +101,12 @@ export const products = [
 
 export default function Projects() {
   return (
-    <HeroParallax products={products} />
+    <div className="relative min-h-screen overflow-hidden">
+      <div className="relative z-10">
+        <HeroParallax products={products} />
+      </div>
+      <ShootingStars />
+      <StarsBackground />
+    </div>
   );
 }
