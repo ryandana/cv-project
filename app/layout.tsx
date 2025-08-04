@@ -18,6 +18,9 @@ export const metadata = {
   title: "Ryan Dana | Portfolio",
   description:
     "Personal portfolio website for Ryan Dana, showcasing projects, contact info, and more.",
+  icons: {
+    icon: "/favicon.ico",
+  },
   openGraph: {
     title: "Ryan Dana | Portfolio",
     description:
