@@ -1,9 +1,6 @@
-"use client";
-import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
-import { usePathname } from "next/navigation";
-import React, { useState } from "react";
-import { FloatingDock } from "@/components/ui/floating-dock";
+import React from "react";
+import { ClientDock } from "@/components/ui/client-dock";
 import {
   IconBrandGithub,
   IconBrandX,
@@ -15,9 +12,37 @@ import {
   IconTerminal2,
   IconUser,
 } from "@tabler/icons-react";
-import { motion } from "motion/react";
-import { cn } from "@/lib/utils";
 import "./globals.css";
+
+export const metadata = {
+  title: "Ryan Dana | Portfolio",
+  description:
+    "Personal portfolio website for Ryan Dana, showcasing projects, contact info, and more.",
+  openGraph: {
+    title: "Ryan Dana | Portfolio",
+    description:
+      "Personal portfolio website for Ryan Dana, showcasing projects, contact info, and more.",
+    url: "https://ryandana.dev",
+    siteName: "Ryan Dana Portfolio",
+    images: [
+      {
+        url: "/img/pfp.jpg",
+        width: 800,
+        height: 600,
+        alt: "Ryan Dana Profile Picture",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Ryan Dana | Portfolio",
+    description:
+      "Personal portfolio website for Ryan Dana, showcasing projects, contact info, and more.",
+    images: ["/img/pfp.jpg"],
+  },
+};
 
 const poppins = Poppins({
   weight: ["400", "500", "600", "700"],
@@ -26,68 +51,10 @@ const poppins = Poppins({
   display: "swap",
 });
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
-  const links = [
-    {
-      title: "Home",
-      icon: (
-        <IconHome
-          className="h-full w-full transition-colors duration-200"
-          style={{ color: "var(--ctp-mocha-blue, #89b4fa)" }}
-        />
-      ),
-      href: "/",
-    },
-    {
-      title: "About",
-      icon: (
-        <IconInfoCircle
-          className="h-full w-full transition-colors duration-200"
-          style={{ color: "var(--ctp-mocha-green, #a6e3a1)" }}
-        />
-      ),
-      href: "/about",
-    },
-    {
-      title: "Projects",
-      icon: (
-        <IconRocket
-          className="h-full w-full transition-colors duration-200"
-          style={{ color: "var(--ctp-mocha-yellow, #f9e2af)" }}
-        />
-      ),
-      href: "/projects",
-    },
-    {
-      title: "Contact",
-      icon: (
-        <IconUser
-          className="h-full w-full transition-colors duration-200"
-          style={{ color: "var(--ctp-mocha-pink, #f5c2e7)" }}
-        />
-      ),
-      href: "/contact",
-    },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub
-          className="h-full w-full transition-colors duration-200"
-          style={{ color: "var(--ctp-mocha-mauve, #cba6f7)" }}
-        />
-      ),
-      href: "https://github.com/ryandana",
-    },
-  ];
-
+function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html suppressHydrationWarning lang="en">
+    <html lang="en">
       <body
-        suppressHydrationWarning
         className={`${poppins.variable} font-poppins antialiased`}
         style={{
           background: "var(--ctp-mocha-base, #1e1e2e)",
@@ -96,11 +63,11 @@ export default function RootLayout({
       >
         <div className="relative min-h-screen w-full">
           {children}
-          <div className="fixed bottom-4 left-0 w-full flex items-center justify-center z-50">
-              <FloatingDock mobileClassName="mb-6" items={links} />
-          </div>
+          <ClientDock />
         </div>
       </body>
     </html>
   );
 }
+
+export default RootLayout;

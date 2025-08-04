@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { Boxes } from "@/components/ui/background-boxes";
-import { cn } from "@/lib/utils";
 export default function Home() {
   return (
     <main className="min-h-screen flex flex-col items-center justify-center px-4 py-12">
@@ -9,7 +8,7 @@ export default function Home() {
       <div className="absolute inset-0 w-full h-full min-h-screen z-10 overflow-hidden">
         <Boxes />
       </div>
-      <div className="relative z-30 max-w-xl w-full text-center flex flex-col items-center gap-4">
+      <div className="z-30 text-center flex flex-col items-center gap-4">
         <img className="w-50 rounded-full" src="/img/pfp.jpg" alt="" />
         <h1
           className="text-2xl sm:text-3xl font-bold"
