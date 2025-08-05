@@ -1,17 +1,6 @@
 import { Poppins } from "next/font/google";
 import React from "react";
 import { ClientDock } from "@/components/ui/client-dock";
-import {
-  IconBrandGithub,
-  IconBrandX,
-  IconExchange,
-  IconHome,
-  IconInfoCircle,
-  IconNewSection,
-  IconRocket,
-  IconTerminal2,
-  IconUser,
-} from "@tabler/icons-react";
 import "./globals.css";
 
 export const metadata = {

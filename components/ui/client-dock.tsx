@@ -1,5 +1,6 @@
 "use client";
 import { FloatingDock } from "@/components/ui/floating-dock";
+import { motion } from "motion/react";
 import {
   IconBrandGithub,
   IconHome,
@@ -63,8 +64,16 @@ export function ClientDock() {
   ];
 
   return (
-    <div className="fixed bottom-4 left-0 w-full flex items-center justify-center z-50">
-      <FloatingDock mobileClassName="mb-6" items={links} />
-    </div>
+    <motion.div
+      initial={{ y: 100 }}
+      animate={{ y: 0 }}
+      className="fixed bottom-4 left-0 w-full flex items-center justify-center z-50"
+    >
+      {/* Desktop dock stays centered, mobile dock is positioned bottom right */}
+      <FloatingDock
+        mobileClassName="fixed bottom-4 right-4 md:hidden"
+        items={links}
+      />
+    </motion.div>
   );
 }
