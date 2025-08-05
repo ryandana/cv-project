@@ -70,7 +70,7 @@ const FloatingDockMobile = ({
                 <a
                   href={item.href}
                   key={item.title}
-                  className="flex h-10 w-10 items-center justify-center rounded-full [background:var(--ctp-mocha-base,#313244)]"
+                  className="flex h-10 w-10 items-center justify-center rounded-full [background:var(--ctp-mocha-mantle,#232634)]"
                 >
                   <div className="h-4 w-4">{item.icon}</div>
                 </a>
@@ -81,7 +81,7 @@ const FloatingDockMobile = ({
       </AnimatePresence>
       <button
         onClick={() => setOpen(!open)}
-        className="flex h-10 w-10 items-center justify-center rounded-full [background:var(--ctp-mocha-base,#313244)]"
+        className="flex h-10 w-10 items-center justify-center rounded-full [background:var(--ctp-mocha-mantle,#232634)]"
       >
         <IconLayoutNavbarCollapse className="h-5 w-5 text-neutral-500 dark:text-neutral-400" />
       </button>
@@ -102,7 +102,7 @@ const FloatingDockDesktop = ({
       onMouseMove={(e) => mouseX.set(e.pageX)}
       onMouseLeave={() => mouseX.set(Infinity)}
       className={cn(
-        "mx-auto hidden h-16 items-end gap-4 rounded-2xl [background:var(--ctp-mocha-base,#313244)] px-4 pb-3 md:flex",
+        "mx-auto hidden h-16 items-end gap-4 rounded-2xl [background:var(--ctp-mocha-mantle,#232634)] px-4 pb-3 md:flex",
         className
       )}
     >
@@ -173,7 +173,7 @@ function IconContainer({
         style={{ width, height }}
         onMouseEnter={() => setHovered(true)}
         onMouseLeave={() => setHovered(false)}
-        className="relative flex aspect-square items-center justify-center rounded-full [background:var(--ctp-mocha-mantle,#232634)]"
+        className="relative flex aspect-square items-center justify-center rounded-full [background:var(--ctp-mocha-base,#313244)]"
       >
         <AnimatePresence>
           {hovered && (

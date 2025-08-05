@@ -51,22 +51,13 @@ export function ClientDock() {
       ),
       href: "/contact",
     },
-    {
-      title: "GitHub",
-      icon: (
-        <IconBrandGithub
-          className="h-full w-full transition-colors duration-200"
-          style={{ color: "var(--ctp-mocha-mauve, #cba6f7)" }}
-        />
-      ),
-      href: "https://github.com/ryandana",
-    },
   ];
 
   return (
     <motion.div
-      initial={{ y: 100 }}
-      animate={{ y: 0 }}
+      initial={{opacity:0, y: 100 }}
+      animate={{opacity:1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
       className="fixed bottom-4 left-0 w-full flex items-center justify-center z-50"
     >
       {/* Desktop dock stays centered, mobile dock is positioned bottom right */}

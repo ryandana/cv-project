@@ -43,7 +43,7 @@ export default function About() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                   src="/img/about.jpeg"
-                  className="lg:h-[600px] h-[300px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                  className="h-[400px] lg:h-[600px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
                   alt="thumbnail"
                 />
               </CardItem>
@@ -127,12 +127,6 @@ export default function About() {
                   title: "Python",
                   link: "https://www.python.org/",
                 },
-                {
-                  Icon: IconBrandReact,
-                  color: "var(--ctp-mocha-blue)",
-                  title: "React",
-                  link: "https://react.dev/",
-                },
               ].map(({ Icon, color, title, link }, i) => (
                 <motion.a
                   key={i}
@@ -153,8 +147,8 @@ export default function About() {
           </div>
         </div>
       </BackgroundBeamsWithCollision>
-      <section className="relative z-10 flex flex-col items-center justify-center py-12 px-4 lg:hidden">
-        <div className="flex flex-col items-center justify-between gap-3 lg:gap-4 py-12 px-2 lg:py-[4%] lg:px-[15%] w-full">
+      <section className="relative z-10 lg:hidden">
+        <div className="flex flex-col justify-center items-center gap-3 lg:gap-4 py-6 px-4 lg:py-[4%] lg:px-[15%] w-full">
           {/* Left Image Section */}
           <div className="w-full max-w-[400px] min-w-[200px]">
             <CardContainer>
@@ -178,7 +172,7 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-6xl font-bold"
+              className="text-4xl font-bold"
               style={{ color: "var(--ctp-mocha-rosewater)" }}
             >
               About Me
@@ -188,18 +182,10 @@ export default function About() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="text-lg w-full max-w-[600px] text-justify"
+              className="text-lg w-full text-justify"
               style={{ color: "var(--ctp-mocha-lavender)" }}
             >
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
-              illum quos, ab sit voluptas minima praesentium dolorem laborum
-              facere nihil aliquam quo officia porro quisquam temporibus illo
-              impedit odit maiores recusandae quasi. Fuga quis obcaecati
-              voluptatibus, consequatur labore non similique inventore
-              consectetur neque consequuntur, nulla tenetur voluptas, porro
-              vitae eum numquam incidunt alias quae harum asperiores quas quos?
-              Similique mollitia minus beatae dolor minima aperiam voluptates
-              soluta iste ratione,
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veritatis hic dignissimos reiciendis quaerat tenetur, et iure doloremque numquam architecto quae tempora reprehenderit obcaecati quibusdam sit molestiae, ipsum ex. Obcaecati repellat odit et ducimus voluptate voluptas velit quo consectetur aperiam, officiis cupiditate, illo a provident, sunt adipisci excepturi laborum iusto.
             </motion.p>
 
             <motion.h1
@@ -248,12 +234,6 @@ export default function About() {
                   color: "var(--ctp-mocha-yellow)",
                   title: "Python",
                   link: "https://www.python.org/",
-                },
-                {
-                  Icon: IconBrandReact,
-                  color: "var(--ctp-mocha-blue)",
-                  title: "React",
-                  link: "https://react.dev/",
                 },
               ].map(({ Icon, color, title, link }, i) => (
                 <motion.a
