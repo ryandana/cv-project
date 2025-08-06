@@ -2,11 +2,11 @@
 import { FloatingDock } from "@/components/ui/floating-dock";
 import { motion } from "motion/react";
 import {
-  IconBrandGithub,
   IconHome,
   IconInfoCircle,
   IconRocket,
   IconUser,
+  IconBook,
 } from "@tabler/icons-react";
 
 export function ClientDock() {
@@ -50,6 +50,16 @@ export function ClientDock() {
         />
       ),
       href: "/contact",
+    },
+    {
+      title: "Blog",
+      icon: (
+        <IconBook
+          className="h-full w-full transition-colors duration-200"
+          style={{ color: "var(--ctp-mocha-maroon)" }}
+        />
+      ),
+      href: "/blog",
     },
   ];
 
