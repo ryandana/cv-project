@@ -53,7 +53,7 @@ export default async function BlogPage() {
   return (
     <main className="min-h-screen px-4 py-12 bg-[var(--ctp-mocha-base)] text-[var(--ctp-mocha-text)]">
       <BlogContainer>
-        <h1 className="text-2xl sm:text-3xl lg:text-4xl font-bold text-[var(--ctp-mocha-lavender)] mb-6 sm:mb-8 text-center px-4">
+        <h1 className="text-5xl lg:text-6xl font-bold text-[var(--ctp-mocha-lavender)] mb-6 sm:mb-8 text-center px-4">
           Blog Post
         </h1>
 
@@ -78,10 +78,10 @@ export default async function BlogPage() {
                     </div>
                   )}
 
-                  <h2 className="text-lg sm:text-xl font-semibold text-center text-[var(--ctp-mocha-blue)] leading-snug blog-post-title">
+                  <h2 className="text-xl lg:text-2xl font-semibold text-center text-[var(--ctp-mocha-blue)] leading-snug blog-post-title">
                     {post.title}
                   </h2>
-                  <p className="text-[var(--ctp-mocha-subtext0)] text-center mt-2 text-xs sm:text-sm line-clamp-3 blog-post-excerpt">
+                  <p className="text-[var(--ctp-mocha-subtext0)] text-justify mt-2 text-sm sm:text-sm line-clamp-3 blog-post-excerpt">
                     {post.excerpt}
                   </p>
                 </Link>
