@@ -43,7 +43,7 @@ export default function About() {
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
                   src="/img/about.jpeg"
-                  className="h-[400px] lg:h-[600px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
+                  className="h-[300px] lg:h-[600px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
                   alt="thumbnail"
                 />
               </CardItem>

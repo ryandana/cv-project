@@ -63,27 +63,28 @@ export default async function BlogPage() {
               <li
                 key={post.id}
                 data-index={index}
-                className="bg-[var(--ctp-mocha-surface1)] rounded-lg p-4 sm:p-6 shadow-sm hover:shadow-lg transition-shadow duration-300 w-full blog-post-item"
+                className="bg-[var(--ctp-mocha-surface0)] rounded-2xl shadow-sm hover:shadow-lg transition-shadow duration-300 w-full blog-post-item"
               >
                 <Link href={`/blog/${post.slug}`} className="block h-full">
                   {post.image_url ? (
                     <img
                       src={post.image_url}
                       alt={post.title || "Blog post image"}
-                      className="w-full h-40 sm:h-48 object-cover rounded mb-3 sm:mb-4 blog-post-image"
+                      className="w-full h-40 sm:h-48 object-cover rounded-tl-2xl rounded-tr-2xl mb-3 sm:mb-4 blog-post-image"
                     />
                   ) : (
                     <div className="w-full h-40 sm:h-48 bg-gray-200 flex items-center justify-center text-gray-500 text-xs sm:text-sm rounded mb-3 sm:mb-4">
                       No image available
                     </div>
                   )}
-
-                  <h2 className="text-xl lg:text-2xl font-semibold text-center text-[var(--ctp-mocha-blue)] leading-snug blog-post-title">
+                  <div className="px-5 py-3 flex flex-col h-[170px]">
+                  <h2 className="text-xl lg:text-2xl mb-  2 font-semibold text-[var(--ctp-mocha-blue)] leading-snug blog-post-title">
                     {post.title}
                   </h2>
-                  <p className="text-[var(--ctp-mocha-subtext0)] text-justify mt-2 text-sm sm:text-sm line-clamp-3 blog-post-excerpt">
-                    {post.excerpt}
-                  </p>
+                    <p className="text-[var(--ctp-mocha-subtext0)] text-justify mt-2 text-sm sm:text-sm line-clamp-3 blog-post-excerpt">
+                      {post.excerpt}
+                    </p>
+                  </div>
                 </Link>
               </li>
             ))}

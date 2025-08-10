@@ -5,54 +5,47 @@ import { HeroParallax } from "@/components/ui/hero-parallax";
 
 export const products = [
   {
-    title: "Moonbeam",
-    link: "https://gomoonbeam.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/moonbeam.png",
+    title: "Web Nikah",
+    link: "https://web-nikah-green.vercel.app",
+    thumbnail: "/img/webnikah.png",
   },
   {
     title: "Luxe",
     link: "https://luxury-brands-three.vercel.app/",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/cursor.png",
+    thumbnail: "/img/luxe.png",
   },
   {
-    title: "Rogue",
-    link: "https://userogue.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/rogue.png",
+    title: "Luminaria",
+    link: "https://luminaria-3cebi3wzt-ryandanaputras-projects.vercel.app",
+    thumbnail: "/img/luminaria.png",
   },
 
   {
-    title: "Editorially",
-    link: "https://editorially.org",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editorially.png",
+    title: "Fundee",
+    link: "https://lombalayananmasyarakat.vercel.app",
+    thumbnail: "/img/fundee.png",
   },
   {
-    title: "Editrix AI",
-    link: "https://editrix.ai",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/editrix.png",
-  },
-  {
-    title: "Pixel Perfect",
-    link: "https://app.pixelperfect.quest",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/pixelperfect.png",
+    title: "Birtday",
+    link: "#",
+    thumbnail: "/img/birtday.png",
   },
 
   {
-    title: "Algochurn",
-    link: "https://algochurn.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/algochurn.png",
+    title: "Zendo",
+    link: "https://github.com/ryandana/zendo",
+    thumbnail: "img/zendo.png",
   },
   {
-    title: "Aceternity UI",
-    link: "https://ui.aceternity.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/aceternityui.png",
+    title: "Pixel Refined",
+    link: "https://github.com/ryandana/refined-pixel",
+    thumbnail: "/img/refined-pixel.png",
+  },
+
+  {
+    title: "Background Remover",
+    link: "https://github.com/ryandana/bg-remover",
+    thumbnail: "/img/bg-remover.png",
   },
   {
     title: "Tailwind Master Kit",
@@ -65,7 +58,7 @@ export const products = [
     link: "https://smartbridgetech.com",
     thumbnail:
       "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
-  }
+  },
 ];
 
 export default function Projects() {
