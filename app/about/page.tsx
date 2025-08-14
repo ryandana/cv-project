@@ -42,7 +42,7 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  src="/img/about.jpeg"
+                  src="/img/pfp.jpg"
                   className="h-[300px] lg:h-[600px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
                   alt="thumbnail"
                 />
@@ -69,15 +69,15 @@ export default function About() {
               className="text-lg lg:text-xl w-85 lg:w-full max-w-[600px] text-justify"
               style={{ color: "var(--ctp-mocha-lavender)" }}
             >
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Repellat
-              illum quos, ab sit voluptas minima praesentium dolorem laborum
-              facere nihil aliquam quo officia porro quisquam temporibus illo
-              impedit odit maiores recusandae quasi. Fuga quis obcaecati
-              voluptatibus, consequatur labore non similique inventore
-              consectetur neque consequuntur, nulla tenetur voluptas, porro
-              vitae eum numquam incidunt alias quae harum asperiores quas quos?
-              Similique mollitia minus beatae dolor minima aperiam voluptates
-              soluta iste ratione,
+              Hi, I’m Ryan. I work as a full-stack web developer, which
+              basically means I get to build both the parts of a website people
+              see and the parts they don’t. I’ve worked with different stacks
+              and tools, from JavaScript frameworks to backend APIs, databases,
+              and cloud services. I enjoy solving problems, turning ideas into
+              working products, and making things as simple and clean as
+              possible for the people who use them. At the end of the day, I’m
+              just someone who loves building things, helping people, and
+              finding better ways to do both.
             </motion.p>
 
             <motion.h1
@@ -185,7 +185,13 @@ export default function About() {
               className="text-lg w-full text-justify"
               style={{ color: "var(--ctp-mocha-lavender)" }}
             >
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel, veritatis hic dignissimos reiciendis quaerat tenetur, et iure doloremque numquam architecto quae tempora reprehenderit obcaecati quibusdam sit molestiae, ipsum ex. Obcaecati repellat odit et ducimus voluptate voluptas velit quo consectetur aperiam, officiis cupiditate, illo a provident, sunt adipisci excepturi laborum iusto.
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vel,
+              veritatis hic dignissimos reiciendis quaerat tenetur, et iure
+              doloremque numquam architecto quae tempora reprehenderit obcaecati
+              quibusdam sit molestiae, ipsum ex. Obcaecati repellat odit et
+              ducimus voluptate voluptas velit quo consectetur aperiam, officiis
+              cupiditate, illo a provident, sunt adipisci excepturi laborum
+              iusto.
             </motion.p>
 
             <motion.h1

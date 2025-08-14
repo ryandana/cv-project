@@ -48,16 +48,9 @@ export const products = [
     thumbnail: "/img/bg-remover.png",
   },
   {
-    title: "Tailwind Master Kit",
+    title: "Naturia",
     link: "https://tailwindmasterkit.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/tailwindmasterkit.png",
-  },
-  {
-    title: "SmartBridge",
-    link: "https://smartbridgetech.com",
-    thumbnail:
-      "https://aceternity.com/images/products/thumbnails/new/smartbridge.png",
+    thumbnail: "/img/naturia.png",
   },
 ];
 
