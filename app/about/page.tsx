@@ -158,7 +158,7 @@ export default function About() {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.8 }}
                   viewport={{ once: true }}
-                  src="/img/about.jpeg"
+                  src="/img/pfp.jpg"
                   className="h-[400px] w-full object-cover rounded-xl group-hover/card:shadow-xl"
                   alt="thumbnail"
                 />
