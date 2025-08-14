@@ -1,6 +1,14 @@
+// app/blog/[slug]/page.tsx
 import { Blog } from '@/types/blog';
 import { notFound } from 'next/navigation';
 import { BlogDetailContainer } from './BlogDetailContainer';
+
+// Correct local PageProps type to override any wrong global definition
+type PageProps = {
+  params: {
+    slug: string;
+  };
+};
 
 async function getBlog(slug: string): Promise<Blog | null> {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/blogs/${slug}`, {
@@ -11,13 +19,7 @@ async function getBlog(slug: string): Promise<Blog | null> {
   return res.json();
 }
 
-interface BlogDetailProps {
-  params: {
-    slug: string;
-  };
-}
-
-export default async function BlogDetail({ params }: BlogDetailProps) {
+export default async function BlogDetail({ params }: PageProps) {
   const post = await getBlog(params.slug);
 
   if (!post) return notFound();
