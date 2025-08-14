@@ -1,4 +1,3 @@
-// app/blog/[slug]/page.tsx
 import { Blog } from '@/types/blog';
 import { notFound } from 'next/navigation';
 import { BlogDetailContainer } from './BlogDetailContainer';
@@ -12,9 +11,14 @@ async function getBlog(slug: string): Promise<Blog | null> {
   return res.json();
 }
 
-export default async function BlogDetail(props: { params: { slug: string } }) {
-  const { slug } = props.params;
-  const post = await getBlog(slug);
+interface BlogDetailProps {
+  params: {
+    slug: string;
+  };
+}
+
+export default async function BlogDetail({ params }: BlogDetailProps) {
+  const post = await getBlog(params.slug);
 
   if (!post) return notFound();
 
